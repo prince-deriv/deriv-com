@@ -1,0 +1,2 @@
+(self.webpackChunkderiv_com=self.webpackChunkderiv_com||[]).push([[8143],{55287:function(e,n,c){"use strict";c.r(n);n.default=function(e){var n={value:!1};return{promise:new Promise((function(c,u){var o=function(e){console.log("Promise was cancelled!"),u(e)};e.then((function(e){return n.value?o(n):c(e)})).catch((function(e){o(n.value?n:e)}))})),cancel:function(){n.value=!0}}}}}]);
+//# sourceMappingURL=component---src-pages-cancellable-promise-js-abdc128f7624d0933748.js.map

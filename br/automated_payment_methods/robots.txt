@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /404/
+Disallow: /homepage/
+Disallow: /landing/
+Disallow: /endpoint/
+Disallow: /livechat/
+Sitemap: https://deriv.com/sitemap/sitemap-index.xml
+Host: https://deriv.com
