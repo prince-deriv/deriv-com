@@ -62,6 +62,13 @@ const DP2PHome = () => {
                 )}
             />
 
+            <Localize translate_text="New Text: Hi" />
+            <Localize translate_text="New Text: Hello" />
+            <Localize translate_text="New Text: World" />
+            <Localize translate_text="New Text: Wow" />
+            <Localize translate_text="New Text: Damn" />
+            <Localize translate_text="New Text: Sheeshh" />
+
             {is_mounted && (
                 <>
                     <Hero />
