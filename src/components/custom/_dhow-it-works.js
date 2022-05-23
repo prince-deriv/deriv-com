@@ -20,6 +20,7 @@ const DHowItWorks = ({ Video, title }) => {
             <Container justify="center" direction="column">
                 <StyledHeader as="h4" type="sub-section-title" align="center" weight="500">
                     {localize('How it works')}
+                    {localize('TODO: How it works')}
                 </StyledHeader>
                 <StyledHeader as="h2" type="page-title" align="center" mt="0.9rem">
                     {title}
