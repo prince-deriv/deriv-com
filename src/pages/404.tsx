@@ -30,6 +30,7 @@ const ButtonWrapper = styled.div`
 `
 
 const PageNotFound = () => {
+    localize('TODO: translate me!')
     return (
         isBrowser() && (
             <Layout>
