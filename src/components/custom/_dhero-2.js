@@ -316,6 +316,7 @@ const DHero = ({
                             to={is_ppc ? '/landing/signup/' : '/signup/'}
                         >
                             {localize('Create free demo account')}
+                            {localize('TODO: Create free demo account')}
                         </StyledLinkButton>
                     )}
                     {go_to_live_demo && (
