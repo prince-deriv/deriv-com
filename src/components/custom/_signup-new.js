@@ -359,6 +359,7 @@ const SignupNew = ({
                     onClick={handleLogin}
                 >
                     {localize('Log in')}
+                    {localize('TODO: Log in')}
                 </StyledLinkText>
             </LoginText>
         </SignupContent>
