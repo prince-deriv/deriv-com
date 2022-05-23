@@ -28,6 +28,7 @@ Deriv.com - An online trading platform that offers a wide selection of derivativ
 -   [File structures](documents/file-structures.md)
 -   [GTM workflow](documents/gtm-workflow.md) - Contains Google Tag Manager workflow and additional information
 -   [Translation workflow](documents/translation-workflow.md) - Contains general workflow and commands required for our translation process
+-   [Typescript guidelines](documents/typescript-guidelines.md) - Contains Typescript guidelines and conventions for this project
 
 ## Pre-installation
 
@@ -73,7 +74,7 @@ Moreover, having these extensions will help you to speed up the development proc
     Create two files `.env.development` and `.env.production` inside your project root directory.
 
     Then check your **lastpass** you'll see a shared item named **Deriv-com Env Variables** copy the variables, they look like this:
-    
+
     ```sh
     DIRECTUS_AUTH_TOKEN=********************************
     GATSBY_DIRECTUS_AUTH_TOKEN=********************************
@@ -147,23 +148,9 @@ PR will be based on crowdin branch if the commits are having text changes
 
 2. Make your changes
 
-3. Extract translation
-
--   Make sure you have the latest Crowdin changes, resolve conflicts if any
-
-    ```sh
-    git pull upstream crowdin
-    ```
-
--   Extract translation text to update `messages.json`
-
-    ```sh
-    npm run translate:extract
-    ```
-
 -   Commit your changes
 
-4. Make pull request
+3. Make pull request
 
 -   Push your changes to your origin, add `-u` flag for the first time push
 
@@ -188,11 +175,29 @@ PR will be based on crowdin branch if the commits are having text changes
 
     -   Set up your Crowdin API KEY in your .bash_profile or .zshrc
 
+1. Extract translation
+
+-   Make sure you have the latest Crowdin changes, resolve conflicts if any
+
+    ```sh
+    git pull upstream crowdin
+    ```
+
+-   Extract translation text to update `messages.json`
+
+    ```sh
+    npm run translate:extract
+    ```
+
+2. Upload translation
+
 -   To upload source text to Crowdin (When task merge to crowdin branch)
 
     ```sh
     npm run translate:upload
     ```
+
+3. Download translation
 
 -   To download/get the latest Crowdin translations
 

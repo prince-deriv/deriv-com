@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery, navigate } from 'gatsby'
 import styled from 'styled-components'
-import Cookies from 'js-cookie'
-import { getLanguage, isChoosenLanguage } from '../../common/utility'
+import { getLanguage, isChoosenLanguage, queryParams } from '../../common/utility'
 import { getCookiesObject, getCookiesFields, getDataObjFromCookies } from 'common/cookies'
 import { Box } from 'components/containers'
 import Login from 'common/login'
@@ -13,10 +12,9 @@ import SignupDefault from 'components/custom/_signup-default'
 import SignupFlat from 'components/custom/_signup-flat'
 import SignupNew from 'components/custom/_signup-new'
 import SignupPublic from 'components/custom/_signup-public'
-import SignupSimple from 'components/custom/_signup-simple'
 import { Header, QueryImage, StyledLink, Text } from 'components/elements'
 import { localize, Localize } from 'components/localization'
-import device from 'themes/device.js'
+import device from 'themes/device'
 
 const Form = styled.form`
     height: 100%;
@@ -85,17 +83,22 @@ const Signup = (props) => {
     }
 
     const getVerifyEmailRequest = (formatted_email) => {
-        const affiliate_token = Cookies.getJSON('affiliate_tracking')
-
         const cookies = getCookiesFields()
         const cookies_objects = getCookiesObject(cookies)
         const cookies_value = getDataObjFromCookies(cookies_objects, cookies)
+        const token = queryParams.get('t')
+
+        if (!token) {
+            delete cookies_value.utm_campaign
+            delete cookies_value.utm_medium
+            cookies_value.utm_source = 'null' //passing null as the cookies takes the affiliates token value when signed up without affiliate token
+        }
 
         return {
             verify_email: formatted_email,
             type: 'account_opening',
             url_parameters: {
-                ...(affiliate_token && { affiliate_token: affiliate_token }),
+                ...(token && { affiliate_token: token }),
                 ...(cookies_value && { ...cookies_value }),
             },
         }
@@ -175,8 +178,6 @@ const Signup = (props) => {
         }
 
         switch (param) {
-            case Appearances.simple:
-                return <SignupSimple {...parameters}></SignupSimple>
             case Appearances.newSignup:
                 return <SignupNew {...parameters}></SignupNew>
             case Appearances.public:

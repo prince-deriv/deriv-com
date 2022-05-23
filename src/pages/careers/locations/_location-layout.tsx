@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import CareerContainer from '../_layout-components/CareerContainer'
-import { locationsTypes } from '../_model/_locations/_locations.types'
+import type { ImageDataLike } from 'gatsby-plugin-image'
+import CareerContainer from '../_layout-components/_career_container'
+import { LocationsType } from '../_model/_locations/_locations.types'
 import device from 'themes/device'
 import { SectionContainer, Flex } from 'components/containers'
 import { Text, LinkText, Header, BackgroundImage, QueryImage } from 'components/elements'
@@ -11,7 +12,7 @@ import { map_api_key, zoho_url } from 'common/constants'
 import { LocalizedLink } from 'components/localization'
 import MapPin from 'images/svg/careers/map.svg'
 
-const Pin = styled.img`
+export const Pin = styled.img`
     width: 12px;
     height: 16px;
     margin-right: 10px;
@@ -46,37 +47,43 @@ const SecondStyledHeader = styled(Header)`
 
     margin-bottom: 0 24px;
 `
-const StyledLinkButton = styled(LinkButton)`
-    font-size: 20px;
-    line-height: 30px;
-    @media ${device.tablet} {
-        font-size: 18px;
-        max-width: 317px;
-    }
-    @media (max-width: 340px) {
-        font-size: 15px;
+
+const HeroBadge = styled(QueryImage)`
+    position: absolute;
+    left: 23%;
+    width: 94px;
+    height: 160px;
+
+    @media ${device.mobileL} {
+        left: 15%;
+        transform-origin: top;
+        transform: scale(0.75);
     }
 `
+
 type HeroProps = {
     display_name: string
-    img_data: string
+    img_data: ImageDataLike
+    badge_data?: ImageDataLike
+    badge_alt?: string
 }
 
-const Hero = ({ display_name, img_data }: HeroProps) => {
+const Hero = ({ display_name, img_data, badge_data, badge_alt }: HeroProps) => {
     return (
         <StyledBackground data={img_data} alt={display_name}>
+            {badge_data && <HeroBadge data={badge_data} alt={badge_alt} />}
             <StyledContainer>
                 <StyledHeader as="h1">{display_name}</StyledHeader>
-                <StyledLinkButton
+                <LinkButton
+                    hero
                     has_no_end_slash
-                    secondary="true"
                     to={zoho_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     external
                 >
                     View open positions in {display_name}
-                </StyledLinkButton>
+                </LinkButton>
             </StyledContainer>
         </StyledBackground>
     )
@@ -221,7 +228,7 @@ const CardText = styled(Text)`
     }
 `
 
-const Iframe = styled.iframe`
+export const Iframe = styled.iframe`
     width: 100%;
     border: 0;
 `
@@ -345,8 +352,8 @@ const MapQueryImage = styled(QueryImage)`
 `
 
 type LocationLayoutProps = {
-    location: locationsTypes
-    images: locationsTypes
+    location: LocationsType
+    images: ImageDataLike
 }
 
 export const LocationLayout = ({ location, images }: LocationLayoutProps) => {
@@ -357,15 +364,22 @@ export const LocationLayout = ({ location, images }: LocationLayoutProps) => {
         <>
             <Hero
                 display_name={display_name}
-                name={location.name}
                 img_data={images[location.name]}
+                badge_data={images[location.badge]}
+                badge_alt={location.badge_alt}
             />
             <FirstSection>
-                <SecondStyledHeader align="center" as="h2" size="var(--text-size-header-5)">
+                <SecondStyledHeader
+                    color="black-6"
+                    type="unset"
+                    align="center"
+                    as="h2"
+                    size="var(--text-size-header-5)"
+                >
                     Deriv in {display_name}
                 </SecondStyledHeader>
                 <Flex tablet_direction="column">
-                    <Text>{location.first_p}</Text>
+                    <Text color="black-6">{location.first_p}</Text>
                     <StyledImageWrapper>
                         <QueryImage
                             data={images[location.first_img]}
@@ -378,7 +392,14 @@ export const LocationLayout = ({ location, images }: LocationLayoutProps) => {
             </FirstSection>
             <SecondSection padding="0px 16px">
                 <SectionContainer padding="0">
-                    <Header align="center" as="h2" size="var(--text-size-header-5)" mb="4rem">
+                    <Header
+                        color="black-6"
+                        type="unset"
+                        align="center"
+                        as="h2"
+                        size="var(--text-size-header-5)"
+                        mb="4rem"
+                    >
                         Our office
                     </Header>
                     <StyledFlex>
@@ -450,10 +471,10 @@ export const LocationLayout = ({ location, images }: LocationLayoutProps) => {
                             max_width="44.4rem"
                         >
                             <StyledDiv>
-                                <Header as="h3" type="subtitle-1">
+                                <Header as="h3" type="subtitle-1" color="black-6">
                                     {`Working at Deriv ${map_office_name}`}
                                 </Header>
-                                <CardText>{location.map_text}</CardText>
+                                <CardText color="black-6">{location.map_text}</CardText>
                                 <Flex jc="unset">
                                     <Pin src={MapPin} alt="map pin" />
                                     {location.google_map_link ? (

@@ -35,6 +35,10 @@ export const DefaultFooter = styled.footer`
 
     @media ${device.mobileL} {
         padding-bottom: 6rem;
+
+        @media ${device.tabletL} {
+            padding-bottom: 0;
+        }
     }
 `
 export const FooterGrid = styled(CssGrid)`
@@ -114,7 +118,7 @@ export const AcademyWrapper = styled.div`
 `
 
 export const LinkWrapper = styled.div`
-    margin-top: ${(props) => (props.first_child == 'true' ? '0.8rem' : '1.6rem')};
+    margin-top: 1.6rem;
 
     @media ${device.laptopM} {
         ${Title} {
@@ -123,6 +127,10 @@ export const LinkWrapper = styled.div`
         ${Link} {
             font-size: var(--text-size-xs);
         }
+    }
+
+    :nth-child(2) {
+        margin-top: 0.8rem;
     }
 `
 export const DisclaimerWrapper = styled.div`
@@ -135,8 +143,9 @@ export const DisclaimerParagraph = styled(Text)`
 
     @media ${device.tabletL} {
         width: 90%;
-        margin: 2rem auto 0;
-        font-size: var(--text-size-sm);
+        margin: 16px auto 0;
+        font-size: 12px;
+        line-height: ${(props) => (props.line_height ? '21px' : '18px')};
     }
 `
 export const shared_css = css`
@@ -149,7 +158,7 @@ export const shared_css = css`
         text-decoration: underline;
     }
     @media ${device.tabletL} {
-        font-size: var(--text-size-sm);
+        font-size: 12px;
     }
 `
 export const StaticAsset = styled.a`
@@ -168,8 +177,8 @@ export const RiskWarning = styled.div`
         border-top: 2px solid var(--color-grey-27);
         border-left: none;
         width: 90%;
-        margin: 4rem auto 0;
-        padding: 1rem;
+        margin: 24px 16px 0;
+        padding: 0 8px 16px;
 
         p {
             padding: 0;
@@ -183,7 +192,7 @@ export const BoldLink = styled(StyledLink)`
     color: var(--color-black-3);
     font-size: var(--text-size-xs);
     @media ${device.tabletL} {
-        font-size: var(--text-size-sm);
+        font-size: 12px;
     }
 `
 export const CopyrightWrapper = styled(Flex)`
@@ -195,12 +204,14 @@ export const CopyrightWrapper = styled(Flex)`
     p {
         font-size: var(--text-size-xs);
         line-height: 1.14;
+        padding: 2rem 0;
     }
 
     @media ${device.tabletL} {
         width: 90%;
         margin: 0 auto;
         padding: 2rem 0;
+        justify-content: center;
 
         p {
             font-size: 1.75rem;
@@ -239,12 +250,3 @@ export const StyledMgaLogo = styled.img`
 export const StyledLogo = styled.img`
     width: 18.2rem;
 `
-
-export const mobile_accordion_header = {
-    borderTop: '1px solid var(--color-grey-26)',
-    borderBottom: 'none',
-    padding: '0',
-    margin: '0 2rem',
-    backgroundColor: 'var(--color-grey-25)',
-    boxShadow: 'none',
-}

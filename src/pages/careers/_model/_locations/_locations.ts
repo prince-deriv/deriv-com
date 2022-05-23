@@ -10,9 +10,9 @@ import {
     address_rwanda,
     address_belarus,
     address_france,
-    address_uk,
     address_guernsey,
 } from './_contact-details'
+import { LocationsType } from './_locations.types'
 import MalaysiaFlagIcon from 'images/svg/careers/flag_malaysia.svg'
 import ParaguayFlagIcon from 'images/svg/careers/flag_paraguay.svg'
 import UAEFlagIcon from 'images/svg/careers/flag_uae.svg'
@@ -21,10 +21,9 @@ import CyprusFlagIcon from 'images/svg/careers/flag_cyprus.svg'
 import RwandaFlagIcon from 'images/svg/careers/flag_rwanda.svg'
 import BelarusFlagIcon from 'images/svg/careers/flag_belarus.svg'
 import FranceFlagIcon from 'images/svg/careers/flag_france.svg'
-import UKFlagIcon from 'images/svg/careers/flag_uk.svg'
 import ChannelIslandsFlagIcon from 'images/svg/careers/flag._channel_islands.svg'
 
-export const cyberjaya = {
+export const cyberjaya: LocationsType = {
     name: 'cyberjaya',
     link: '/careers/locations/cyberjaya/',
     display_name: 'Cyberjaya',
@@ -52,7 +51,7 @@ export const cyberjaya = {
     has_iframe: true,
 }
 
-export const malta = {
+export const malta: LocationsType = {
     name: 'malta',
     link: '/careers/locations/malta/',
     display_name: 'Malta',
@@ -79,7 +78,7 @@ export const malta = {
     has_iframe: true,
 }
 
-export const dubai = {
+export const dubai: LocationsType = {
     name: 'dubai',
     link: '/careers/locations/dubai/',
     display_name: 'Dubai',
@@ -104,9 +103,11 @@ export const dubai = {
     address: address_dubai,
     google_map_link: 'https://goo.gl/maps/UMNHYdEBdsAg7Ax29',
     has_iframe: true,
+    badge: 'dubai_great_place_to_work_badge',
+    badge_alt: 'Dubai Great Place to Work 2022 Certification Badge',
 }
 
-export const labuan = {
+export const labuan: LocationsType = {
     name: 'labuan',
     link: '/careers/locations/labuan/',
     display_name: 'Labuan',
@@ -134,7 +135,7 @@ export const labuan = {
     has_iframe: true,
 }
 
-export const asuncion = {
+export const asuncion: LocationsType = {
     name: 'asuncion',
     link: '/careers/locations/asuncion/',
     display_name: 'Asunción',
@@ -161,7 +162,7 @@ export const asuncion = {
     has_iframe: true,
 }
 
-export const melaka = {
+export const melaka: LocationsType = {
     name: 'melaka',
     link: '/careers/locations/melaka/',
     display_name: 'Melaka',
@@ -189,7 +190,7 @@ export const melaka = {
     has_iframe: true,
 }
 
-export const ipoh = {
+export const ipoh: LocationsType = {
     name: 'ipoh',
     link: '/careers/locations/ipoh/',
     display_name: 'Ipoh',
@@ -216,7 +217,7 @@ export const ipoh = {
     has_iframe: true,
 }
 
-export const cyprus = {
+export const cyprus: LocationsType = {
     name: 'cyprus',
     link: '/careers/locations/cyprus/',
     display_name: 'Limassol',
@@ -244,7 +245,7 @@ export const cyprus = {
     has_iframe: true,
 }
 
-export const rwanda = {
+export const rwanda: LocationsType = {
     name: 'rwanda',
     link: '/careers/locations/rwanda/',
     display_name: 'Kigali',
@@ -273,7 +274,7 @@ export const rwanda = {
     has_iframe: false,
 }
 
-export const minsk = {
+export const minsk: LocationsType = {
     name: 'minsk',
     link: '/careers/locations/minsk/',
     display_name: 'Minsk',
@@ -302,7 +303,7 @@ export const minsk = {
     has_iframe: false,
 }
 
-export const paris = {
+export const paris: LocationsType = {
     name: 'paris',
     link: '/careers/locations/paris/',
     display_name: 'Paris',
@@ -311,73 +312,59 @@ export const paris = {
     flagIcon: FranceFlagIcon,
     thumbnail: 'thumbnail_paris',
     first_p:
-        "Deriv (France) SAS is a wholly-owned subsidiary of the Deriv Group dedicated to research and development. It brings together a diverse range of expertise, from blockchain professionals to mathematicians and quantitative analysts. The goal of this team is to develop Deriv's future-proof products and services.",
+        "Deriv (France) SAS is a wholly-owned subsidiary of the Deriv Group dedicated to research and development. It is going to bring together a diverse range of expertise, from blockchain professionals to mathematicians and quantitative analysts. The goal of this team is to develop Deriv's future-proof products and services.",
     first_img: 'living_in_paris',
     grid_images: ['paris_grid_1', 'paris_grid_2', 'paris_grid_3', 'paris_grid_4'],
-    map: 'cnWCUN529qw38Yce6',
+    map: 'ChIJ71ubXstv5kcRgI6dxotwI4Y',
     map_text:
-        'There are always exciting projects to work on at Deriv (France). The bright team working at our R&D branch is the think tank that helps create our next generation of online trading products. If you’re driven with the same passion and are looking for new challenges to embrace, join our team in Paris.',
+        'Deriv (France) is going to be the heart of our research and development. We’re going to create an elite think tank in this centre that will help create our next generation of online trading products. If you’re looking for new fintech challenges to embrace, join our team in Paris.',
     address: address_france,
     map_img: 'paris_map',
     google_map_link: 'https://goo.gl/maps/cnWCUN529qw38Yce6',
-    has_iframe: false,
+    has_iframe: true,
+    has_map: true,
 }
 
-export const london = {
-    name: 'london',
-    link: '/careers/locations/london/',
-    display_name: 'London',
-    map_office_name: '(UK)',
-    country: 'United Kingdom',
-    flagIcon: UKFlagIcon,
-    thumbnail: 'thumbnail_london',
-    first_p:
-        'Deriv (UK) is a core Senior Managers and Certification Regime (SMCR) firm. Experts in law, finance, and risk management work together in our London office as a senior team of strategists. This office has three crucial functions: ensuring regulatory and statutory compliance in all areas of company operations within the UK jurisdiction, making financial plans to support company growth, and mitigating risks.',
-    first_img: 'living_in_london',
-    grid_images: ['london_grid_1', 'london_grid_2', 'london_grid_3', 'london_grid_4'],
-    map: 'DJaQaFd9jqGiPB7e9',
-    map_text:
-        'Working at Deriv (UK) means collaborating with talented professionals on exciting challenges. We value an analytical mindset, a can-do approach, and leadership skills. This is a chance to participate in devising road plans and shaping policies for a global company. A career in the fintech industry never gets boring. Join our London office if you are ready for a mighty adventure.',
-    address: address_uk,
-    map_img: 'london_map',
-    google_map_link: 'https://goo.gl/maps/DJaQaFd9jqGiPB7e9',
-    has_iframe: false,
-}
-export const guernsey = {
+export const guernsey: LocationsType = {
     name: 'guernsey',
     link: '/careers/locations/guernsey/',
     display_name: 'Guernsey',
+    img_alt: 'Guernsey alt img',
     map_office_name: '(Guernsey)',
     country: 'Channel Islands',
     flagIcon: ChannelIslandsFlagIcon,
     thumbnail: 'thumbnail_guernsey',
     first_p:
-        'Our office at Guernsey focuses on compliance. A team of dedicated experts provide oversight so that Deriv offices across the world comply with legislative and regulatory requirements. With their vast knowledge in corporate law, anti-money laundering, and other related legislations, they will anticipate and mitigate regulatory risks.',
+        'Our focus at Guernsey shall be on compliance. We’re to form a team of experts in legislative and regulatory requirements to provide Deriv offices worldwide with compliance oversight. With their knowledge in corporate law, anti-money laundering, and other related legislations, the Guernsey team will anticipate and mitigate regulatory risks.',
     first_img: 'living_in_guernsey',
+    first_img_alt: 'living_in_guernsey alt img',
     grid_images: ['guernsey_grid_1', 'guernsey_grid_2', 'guernsey_grid_3', 'guernsey_grid_4'],
+    grid_img_alt: ['guernsey grid 1', 'guernsey grid 2', 'guernsey grid 3', 'guernsey grid 4'],
     map: 'M8p55z3Wu4EKhQ3A7',
     map_text:
-        'At Deriv (Guernsey), we study regulatory landscapes in different Deriv jurisdictions to ensure the right thing is done at all times. We seek self-motivation, attention to detail, and a strong interest in law. Deriv (Guernsey) gives you the opportunity to analyse regulatory policies, predict changes in fintech regulations, and formulate plans to ensure the efficiency of Deriv Group’s compliance strategies.',
+        'Deriv (Guernsey) can be an ideal work environment for those who have strong attention to detail, motivation, and interest in law. Joining us at Guernsey gives you the opportunity to analyse regulatory policies, predict changes in fintech regulations, and formulate plans to ensure the efficiency of Deriv Group’s compliance strategies.',
     address: address_guernsey,
     map_img: 'guernsey_map',
     google_map_link: 'https://goo.gl/maps/M8p55z3Wu4EKhQ3A7',
     has_iframe: false,
+    has_map: false,
 }
-export const all_offices = [
-    // london,
+
+export const all_offices: LocationsType[] = [
     dubai,
-    // paris,
     malta,
     cyprus,
-    // guernsey,
     cyberjaya,
     labuan,
     ipoh,
     melaka,
+    paris,
+    guernsey,
     asuncion,
     rwanda,
     minsk,
 ]
+
 export const locations = {
     cyberjaya: `${cyberjaya.display_name}, ${cyberjaya.country}`,
     malta: `${malta.display_name}`,
@@ -389,7 +376,8 @@ export const locations = {
     cyprus: `${cyprus.display_name}, ${cyprus.country}`,
     rwanda: `${rwanda.display_name}, ${rwanda.country}`,
     belarus: `${minsk.display_name}, ${minsk.country}`,
-    // france: `${paris.display_name}, ${paris.country}`,
-    // uk: `${london.display_name}, ${london.country}`,
-    // guernsey: `${guernsey.display_name}, ${guernsey.country}`,
+    france: `${paris.display_name}, ${paris.country}`,
+    guernsey: `${guernsey.display_name}, ${guernsey.country}`,
 }
+
+export const all_countries: string[] = [...new Set(all_offices.map((office) => office.country))]

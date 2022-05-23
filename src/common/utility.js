@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { navigate } from 'gatsby'
 import Cookies from 'js-cookie'
 import extend from 'extend'
@@ -7,8 +8,9 @@ import {
     deriv_app_languages,
     live_chat_redirection_link,
     live_chat_key,
+    domains,
 } from './constants'
-import { isUK } from 'common/country-base'
+import { isUK, eu_countries } from 'common/country-base'
 import { localize } from 'components/localization'
 
 export const trimSpaces = (value) => value?.trim()
@@ -269,14 +271,14 @@ export const getVideoObject = (video_data) => {
         tags,
     } = video_data
     const { id: video_id } = video_file
-    const { id: thumbnail_id, title: alt } = video_thumbnail
+    const { title: alt } = video_thumbnail
 
     return {
         published_date,
-        thumbnail_img: getAssetUrl(thumbnail_id),
         thumbnail_img_alt: alt,
         video_title,
         video_description,
+        video_thumbnail,
         video_url: getAssetUrl(video_id),
         video_duration,
         featured,
@@ -306,22 +308,29 @@ export const addScript = (settings) => {
     const script = document.createElement('script')
 
     Object.keys(settings).forEach((key) => {
-        script.setAttribute(key, settings[key])
+        if (key === 'text') {
+            script.text = settings['text']
+        } else {
+            script.setAttribute(key, settings[key])
+        }
     })
-
     document.body.appendChild(script)
 }
 
 // Function to get the user selected language, can be used in the future once need to check other languages
 export const isChoosenLanguage = () => ({ english: getLanguage() === 'en' })
 
-// Function to manually replace server's locale ("zh_tw" or "zh_cn")  to "zh-tw"/"zh-cn"
-export const replaceLocale = (locale) => {
-    let checked_locale = locale
-    if (locale === 'zh_tw') {
-        checked_locale = 'zh-tw'
-    } else if (locale === 'zh_cn') {
-        checked_locale = 'zh-cn'
+// Function to manually replace server's locale ("zh_tw" or "zh_cn") to "zh-tw"/"zh-cn"
+export const replaceLocale = (url) => {
+    let checked_locale = url
+    const excluded_paths = ['smarttrader']
+    if (!excluded_paths.some((path) => url.includes(path))) {
+        domains.forEach((domain) => {
+            if (url.includes(domain) && url.includes('zh_tw'))
+                checked_locale = url.replace(/(zh_tw)/g, 'zh-tw')
+            if (url.includes(domain) && url.includes('zh_cn'))
+                checked_locale = url.replace(/(zh_cn)/g, 'zh-cn')
+        })
     }
     return checked_locale
 }
@@ -338,6 +347,7 @@ export const calculateReadTime = (text) => {
 export const getMinRead = (text) => calculateReadTime(text).toString() + ' ' + localize('min read')
 
 export const slugify = (text) =>
+    text &&
     text
         .toString()
         .normalize('NFD') // The normalize() method returns the Unicode Normalization Form of a given string.
@@ -345,5 +355,127 @@ export const slugify = (text) =>
         .toLowerCase()
         .trim() // Remove whitespace from both sides of a string
         .replace(/\s+/g, '-') // Replace spaces with -
-        .replace(/[^\w-]+/g, '') // Remove all non-word chars
         .replace(/--+/g, '-') // Replace multiple - with single -
+
+export const unslugify = (slug) => {
+    if (slug) {
+        const result = slug.replace(/-/g, ' ')
+        return result.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+        })
+    }
+}
+export const removeSpecialCharacterUrl = (url) =>
+    url &&
+    slugify(url)
+        .replace(/\?+/g, '') // Replace question mark with empty value
+        .replace(/[/]/g, '-') //Replace '/' with single -
+
+export const queryParams = {
+    get: (key) => {
+        const params = new URLSearchParams(location.search)
+        let param_values = {}
+        //To get the params from the url
+
+        if (typeof key === 'string') {
+            return params.get(key)
+        } else {
+            key.forEach((k) => {
+                param_values[key] = params.get(k)
+            })
+        }
+        return param_values
+    },
+    set: (objects) => {
+        // To set the params from the url
+        const url = new URL(location)
+
+        Object.keys(objects).forEach((k) => {
+            const value = objects[k]
+            url.searchParams.set(k, value)
+        })
+
+        return window.history.replaceState(null, null, url)
+    },
+    delete: (key) => {
+        //To delete the params from the url
+        const url = new URL(location)
+        if (typeof key === 'string') {
+            url.searchParams.delete(key)
+        } else {
+            key.forEach((k) => {
+                url.searchParams.delete(k)
+            })
+        }
+
+        return history.replaceState(null, null, url)
+    },
+}
+export const getBaseRef = (ref) => {
+    // this is intended to solve a problem of preact that
+    // in some cases element api's are in the ref.current.base and
+    // in other cases they are in ref.current
+    return ref?.current?.base?.style ? ref?.current?.base : ref?.current
+}
+
+export const useCallbackRef = (callback) => {
+    const callback_ref = useRef()
+
+    useEffect(() => {
+        callback_ref.current = callback
+    }, [callback])
+
+    return callback_ref
+}
+
+const eu_subdomain_countries = eu_countries.filter((country) => country !== 'gb')
+
+const redirect = (subdomain) => {
+    const redirection_url = `${subdomain}.deriv.com`
+    window.location.href = `https://${redirection_url + window.location.pathname}`
+}
+
+const redirectToDeriv = (full_domain) => {
+    const final_url = full_domain.includes('staging') ? 'staging.deriv.com' : 'deriv.com'
+    window.location.href = `https://${final_url}`
+}
+
+export const handleDerivRedirect = (country, subdomain) => {
+    if (eu_subdomain_countries.includes(country)) {
+        redirect(subdomain.includes('staging') ? 'staging-eu' : 'eu')
+    }
+}
+
+const handleEURedirect = (country, full_domain) => {
+    if (!eu_subdomain_countries.includes(country)) {
+        redirectToDeriv(full_domain)
+    }
+}
+
+export const handleRedirect = (residence, current_client_country, full_domain) => {
+    const subdomain = window.location.hostname.split('.').slice(0, -2).join('.')
+    const country = residence ? residence : current_client_country
+
+    const eu_domains = ['eu', 'staging-eu']
+
+    if (isLocalhost() || isTestlink()) {
+        return false
+    } else if (eu_domains.some((e) => subdomain.includes(e))) {
+        handleEURedirect(country, full_domain)
+    } else {
+        handleDerivRedirect(country, subdomain)
+    }
+}
+
+export const queryParamData = () => {
+    if (isBrowser()) {
+        const queryParams = new URLSearchParams(window.location.search)
+        const platform_name = queryParams.get('platform')
+        const platform_list = ['derivgo', 'p2p']
+        return platform_list.includes(platform_name) ? platform_name : ''
+    } else return ''
+}
+
+export const isLocalhost = () => !!(isBrowser() && process.env.NODE_ENV === 'development')
+
+export const isTestlink = () => !!(isBrowser() && window.location.hostname.includes('binary.sx'))

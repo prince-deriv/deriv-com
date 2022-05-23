@@ -1,7 +1,7 @@
 {
     "include": ["./src/**/*", "./src/custom.d.ts"],
-      "jsx": "react",
-      "compilerOptions": {
+    "jsx": "react",
+    "compilerOptions": {
         "baseUrl": "src",
         "jsx": "preserve",
         "esModuleInterop": true,
@@ -9,6 +9,12 @@
         "emitDecoratorMetadata": true,
         "noEmit": true,
         "skipLibCheck": true,
-        "moduleResolution": "node"
-      }
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "downlevelIteration": true
+    },
+    "paths": {
+        "react": ["node_modules/preact/compat/"],
+        "react-dom": ["node_modules/preact/compat/"]
+    }
 }

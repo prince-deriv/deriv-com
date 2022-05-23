@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ImageDataLike } from 'gatsby-plugin-image'
+import type { ImageDataLike } from 'gatsby-plugin-image'
 import { StyledCard } from '../_layout-components/_team-card'
 import { all_offices } from '../_model/_locations/_locations'
 import device from 'themes/device'
@@ -177,9 +177,6 @@ const query = graphql`
             ...fadeIn
         }
         thumbnail_paris: file(relativePath: { eq: "careers/thumbnail_paris.jpg" }) {
-            ...fadeIn
-        }
-        thumbnail_london: file(relativePath: { eq: "careers/thumbnail_london.jpg" }) {
             ...fadeIn
         }
         thumbnail_guernsey: file(relativePath: { eq: "careers/thumbnail_guernsey.jpg" }) {
