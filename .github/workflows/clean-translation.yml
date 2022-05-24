@@ -4,10 +4,12 @@ on:
     push:
         branches:
             - 'master-*'
+            - 'translation-*'
+            
 
 jobs:
     crowdin-branch-delete:
-        if: github.event.action == 'closed'
+        if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
             - name: Checkout 🛎️
