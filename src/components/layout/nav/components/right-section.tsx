@@ -82,11 +82,13 @@ const RightSection = ({
                 <>
                     <StyledButton id="dm-nav-login-button" onClick={handleLogin} primary>
                         {localize('Log in')}
+                        {localize('TODO: Log in')}
                     </StyledButton>
 
                     <LocalizedLink id="dm-signup" to={signup_url}>
                         <SignupButton id="dm-nav-signup" ref={button_ref} secondary="true">
                             {localize('Create free demo account')}
+                            {localize('TODO: Create free demo account')}
                         </SignupButton>
                     </LocalizedLink>
                 </>
