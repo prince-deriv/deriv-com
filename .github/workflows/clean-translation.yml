@@ -23,6 +23,8 @@ jobs:
                   node-version: '14.x'
             - run: npm i -g @crowdin/cli
             - run: npm ci
+            - run: 
+                echo "test ${{ steps.last_merged_branch.outputs.branch }}"
             - name: Git Setup
               run: 
                   echo "Setting up Git identity"
