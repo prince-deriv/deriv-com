@@ -102,6 +102,11 @@ export const CFDWarning = ({ is_ppc }) => {
                             values={{ loss_percent }}
                             components={[<strong key={0} />]}
                         />
+                        <Localize
+                            translate_text="TODO: test localize component"
+                            values={{ loss_percent }}
+                            components={[<strong key={0} />]}
+                        />
                     </CFDText>
                 </CFDContainer>
             </CFDWrapper>
