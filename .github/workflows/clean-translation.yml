@@ -27,7 +27,7 @@ jobs:
               run: echo "Deleting"  
             - uses: tonynguyenit18/github-action-custom-vars@v1
             - run:  
-                  crowdin branch delete -b ${{ $RECENT_MERGED_BRANCH_NAME }} -T ${{ secrets.CROWDIN_API_KEY }}
+                  crowdin branch delete -b $RECENT_MERGED_BRANCH_NAME -T ${{ secrets.CROWDIN_API_KEY }}
                     
 
         
