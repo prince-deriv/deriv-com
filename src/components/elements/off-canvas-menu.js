@@ -148,6 +148,7 @@ export const OffCanvasMenuWrapper = (props) => {
                             <>
                                 <Text color="grey-5" mb="8px" size="14px">
                                     {<Localize translate_text="Trade types" />}
+                                    {<Localize translate_text="TODO: Trade types" />}
                                 </Text>
                                 <Flex mb="2rem">
                                     <NavCard
