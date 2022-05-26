@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get PR closed number
-        env:
-          PR_NUMBER: ${{ toJson(github.event.number) }}
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.2
+      - name: Fetching Feature Branch
         run: |
-          echo "$PR_NUMBER"
+          echo "Latest branch merged to master: ${{ steps.branch-name.outputs.head_ref_branch }}"
