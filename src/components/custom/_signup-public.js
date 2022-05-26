@@ -328,6 +328,7 @@ const SignupPublic = ({
                                 <br />
                                 <StyledHeaderText weight="normal" size="1.6rem">
                                     {localize('Sign up for your demo account now.')}
+                                    {localize('TODO: Sign up for your demo account now.')}
                                 </StyledHeaderText>
                                 <InputGroup>
                                     <InputWrapper>
