@@ -208,6 +208,7 @@ const MainLinksSection = ({ is_ppc, is_ppc_redirect }) => {
                                 rel="noopener noreferrer"
                             >
                                 {<Localize translate_text="API" />}
+                                {<Localize translate_text="TODO: API" />}
                             </Link>
                         </LinkWrapper>
                         <LinkWrapper>
