@@ -40,6 +40,7 @@ const UKAccountClosureModal = () => {
             </Header>
             <Header type="paragraph-2" mt="1.6rem">
                 <Localize translate_text="What you need to do now" />
+                <Localize translate_text="TODO: What you need to do now" />
             </Header>
             <Header type="paragraph-2" weight="regular" mt="0.8rem">
                 <Localize translate_text="Please proceed to withdraw all your funds from your account." />
