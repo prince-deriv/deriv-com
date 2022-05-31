@@ -33,6 +33,7 @@ const contents = [
 
 const contents_ppc = [
     <Localize key={3} translate_text="Tight spreads" />,
+    <Localize key={4} translate_text="TODO: Tight spreads" />,
     <Localize key={2} translate_text="Sharp prices" />,
     <Localize key={1} translate_text="100+ tradeable assets" />,
     <Localize key={0} translate_text="20+ years of experience" />,
