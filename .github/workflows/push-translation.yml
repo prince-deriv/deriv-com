@@ -21,7 +21,6 @@ jobs:
               uses: actions/setup-node@v2.1.2
               with:
                   node-version: '14.x'
-              if:  contains(steps.extract_branch.outputs.branch, 'translation-') || contains(steps.extract_branch.outputs.branch, 'stp-')
             - run: npm i -g @crowdin/cli
             - run: npm ci
             - name: Git Setup
@@ -30,7 +29,6 @@ jobs:
                   git config --global user.name "DerivFE"
                   git config --global user.email "80095553+DerivFE@users.noreply.github.com"
             - name: Push New Strings & Translations ⬆️
-              if:  contains(steps.extract_branch.outputs.branch, 'translation-') || contains(steps.extract_branch.outputs.branch, 'stp-')
               run:  
                   crowdin upload sources -b ${{ steps.extract_branch.outputs.branch }} -T ${{ secrets.CROWDIN_API_KEY }}; crowdin upload translations -b ${{ steps.extract_branch.outputs.branch }} -T ${{ secrets.CROWDIN_API_KEY }}
                 
