@@ -453,7 +453,7 @@ export const NavMarket = ({ onClick, is_ppc }) => {
                     content={
                         <Localize translate_text="Trade with leverage on the price movement of popular crypto-fiat pairs." />
                     }
-                    title={<Localize translate_text="Cryptocurrencies" />}
+                    title={<Localize translate_text="Cryptocurrenciessss" />}
                     onClick={onClick}
                     to="/markets/cryptocurrencies/"
                 />
