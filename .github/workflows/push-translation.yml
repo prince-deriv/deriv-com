@@ -16,7 +16,7 @@ jobs:
               id: extract_branch
             - name: Checking branch name (❌ Stops when branch is not for translation)
               uses: andymckay/cancel-action@0.2
-              if:  "!contains(steps.extract_branch.outputs.branch, 'translation-') || !contains(steps.extract_branch.outputs.branch, 'stp-')"
+              if:  "!contains(steps.extract_branch.outputs.branch, 'translation-') && !contains(steps.extract_branch.outputs.branch, 'stp-')"
             - name: Checkout 🛎️
               uses: actions/checkout@v2.3.1
             - name: Setup Node
