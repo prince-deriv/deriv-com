@@ -140,7 +140,7 @@ export const OffCanvasMenuWrapper = (props) => {
             <OffCanvasMenuContainer>
                 <Accordion>
                     <AccordionItem
-                        header={<Localize translate_text="Trade" />}
+                        header={<Localize translate_text="Traderz" />}
                         header_style={header_style}
                         style={content_style}
                     >
