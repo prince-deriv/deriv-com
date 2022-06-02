@@ -453,7 +453,7 @@ export const NavMarket = ({ onClick, is_ppc }) => {
                     content={
                         <Localize translate_text="Trade with leverage on the price movement of popular crypto-fiat pairs." />
                     }
-                    title={<Localize translate_text="Cryptocurrencies" />}
+                    title={<Localize translate_text="Cryptocurrenciessss" />}
                     onClick={onClick}
                     to="/markets/cryptocurrencies/"
                 />
@@ -576,7 +576,7 @@ export const NavResources = ({ onClick }) => (
         />
         <CardLink
             icon={() => <img src={Signals} alt="" width="24" height="24" />}
-            title={<Localize translate_text="DMT5 Signals" />}
+            title={<Localize translate_text="DMT5 Signalszzz" />}
             onClick={onClick}
             to="/dmt5-trading-signals/#signal-subscriber/"
         />
