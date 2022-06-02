@@ -14,7 +14,7 @@ jobs:
               shell: bash
               run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
               id: extract_branch
-            if: contains(steps.extract_branch.outputs.branch, 'translation-') || contains(steps.extract_branch.outputs.branch, 'stp-')
+            - if: contains(steps.extract_branch.outputs.branch, 'translation-') || contains(steps.extract_branch.outputs.branch, 'stp-')
             - name: Checkout 🛎️
               uses: actions/checkout@v2.3.1
             - name: Setup Node
