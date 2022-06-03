@@ -98,7 +98,7 @@ const DisclaimerSection = ({ is_academy }) => {
                         </NonEU>
                         <EU>
                             <DisclaimerParagraph no_margin>
-                                <Localize translate_text="CFDs are considered complex derivatives and may not be suitable for retail clients." />
+                                <Localize translate_text="CFDs are considered complex derivatives and may not be suitable for retail clients...." />
                             </DisclaimerParagraph>
                             <DisclaimerParagraph>
                                 <Localize
