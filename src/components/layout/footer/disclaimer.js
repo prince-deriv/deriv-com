@@ -132,7 +132,7 @@ const DisclaimerSection = ({ is_academy }) => {
                             </DisclaimerParagraph>
                             <DisclaimerParagraph>
                                 <Localize
-                                    translate_text="Before trading in the complex financial products offered, please be sure to understand the risks involved and learn about <0>Secure and responsible trading</0>."
+                                    translate_text="Before trading in the complex financsial products offered, please be sure to understand the risks involved and learn about <0>Secure and responsible trading</0>."
                                     components={[
                                         <BoldLink key={0} target="_blank" to="/responsible/" />,
                                     ]}
