@@ -26,7 +26,7 @@ jobs:
                 git config --global user.name "DerivFE"
                 git config --global user.email "80095553+DerivFE@users.noreply.github.com"
 
-                crowdin download -b  master ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
+                crowdin download -b  master -T ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
 
                 if [ -z "$(git status --porcelain)" ]; then
                   echo "Found no new translation files that need to be merged with master. Not creating a PR."
