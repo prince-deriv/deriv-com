@@ -37,7 +37,7 @@ jobs:
                   git add .
                   git commit -m "translations: 📚 sync translations with crowdin"
                   # Force push to this branch in case a previous run created it.
-                  git push --set-upstream origin "$branch_name" -f
+                  git push -u origin "$branch_name" -f
                   sudo apt install gh
                   gh auth login --with-token <<< ${{ github.token }}
                   gh pr close "$branch_name" || true
