@@ -25,6 +25,8 @@ jobs:
                 echo "Setting up Git identity"
                 git config --global user.name "DerivFE"
                 git config --global user.email "80095553+DerivFE@users.noreply.github.com"
+                git pull 
+                git show-ref
 
                 crowdin download -b  master -T ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
 
@@ -36,7 +38,7 @@ jobs:
                   cd $(git rev-parse --show-toplevel)
                   git add .
                   git commit -m "translations: 📚 sync translations with crowdin"
-                  git show-ref
+              
                   # Force push to this branch in case a previous run created it.
                   git push -u origin "$branch_name" -f
                   sudo apt install gh
