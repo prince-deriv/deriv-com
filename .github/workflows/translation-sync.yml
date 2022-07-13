@@ -25,8 +25,7 @@ jobs:
                 echo "Setting up Git identity"
                 git config --global user.name "DerivFE"
                 git config --global user.email "80095553+DerivFE@users.noreply.github.com"
-                git pull 
-                git show-ref
+               
 
                 crowdin download -b  master -T ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
 
@@ -38,11 +37,13 @@ jobs:
                   cd $(git rev-parse --show-toplevel)
                   git add .
                   git commit -m "translations: 📚 sync translations with crowdin"
-              
-                  # Force push to this branch in case a previous run created it.
-                  git push -u origin "$branch_name" -f
-                  sudo apt install gh
-                  gh auth login --with-token <<< ${{ github.token }}
-                  gh pr close "$branch_name" || true
-                  gh pr create --fill --base "master" --head "binary-com:$branch_name"
                 fi
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v3.10.1
+              with:
+                token: ${{ secrets.GH_TOKEN }}
+                commit-message: 'translations: 📚 sync translations with crowdin'
+                title: 'Auto Update Translations'
+                body: Auto-created Pull Request
+                branch: ${{ github.ref }} 
+                base: master-origin
