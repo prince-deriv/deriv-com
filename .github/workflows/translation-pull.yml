@@ -1,9 +1,7 @@
 name: Pull Translation
 
-
 on:
-  issue_comment:
-    types: [created]
+  pull_request_comment:
 jobs:
   pull-translation:
     runs-on: ubuntu-latest
