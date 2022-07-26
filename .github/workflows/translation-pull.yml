@@ -1,11 +1,24 @@
-name: Pull Translation
-
 on: issue_comment
 
 jobs:
-  pull-translation:
+  pr_commented:
+    # This job only runs for pull request comments
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - name: Execute for pull request comments only
-        run: echo "This is a pull request comment event !!!"
-   
+      - run: |
+          echo A comment on PR $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
