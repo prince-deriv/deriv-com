@@ -18,8 +18,13 @@ jobs:
             - run: npm i -g @crowdin/cli
             - name: Fetch Crowdin Master Translation ⬇️ 
               run: |
-                  crowdin download -b  master-test -T ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master-test -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
-                  git status
+                    crowdin download -b  master-test -T ${{ secrets.CROWDIN_API_KEY }} && crowdin download -b master-test -l zh-CN -T ${{ secrets.CROWDIN_API_KEY }}
+                    echo "Committing new translation data 📝"
+                    echo "Setting up Git identity"
+                    git config --global user.name "DerivFE"
+                    git config --global user.email "80095553+DerivFE@users.noreply.github.com"
+                    git add -u
+                    git commit -m "translation: 📚 sync translations from crowdin master branch"
             - name: Push New Strings & Translations ⬆️
               run:  
                   crowdin upload sources -b ${{ github.ref_name }} -T ${{ secrets.CROWDIN_API_KEY }}; crowdin upload translations -b ${{ github.ref_name }} -T ${{ secrets.CROWDIN_API_KEY }}
