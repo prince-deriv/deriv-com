@@ -8,9 +8,13 @@ on:
       
 jobs:
     push-translation:
-        if: startsWith(github.event.workflow_run.head_branch, 'translation') || startsWith(github.event.workflow_run.head_branch, 'stp')
         runs-on: ubuntu-latest
         steps:
+            - uses: deepakputhraya/action-branch-name@master
+              with:
+                regex: '^[a-zA-Z0-9-_]+$' 
+                allowed_prefixes: 'translation-,stp-' 
+                ignore: master
             - name: 'Source: [${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}]'
               run: echo 'Pushing strings and translations from ${{github.event.workflow_run.head_repository.full_name}}/${{ github.event.workflow_run.head_branch }}'
             - name: Checkout 🛎️
