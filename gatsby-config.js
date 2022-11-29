@@ -32,6 +32,19 @@ module.exports = {
     plugins: [
         'gatsby-plugin-react-helmet',
         {
+            resolve: `gatsby-plugin-page-creator`,
+            options: {
+                path: `${__dirname}/src/conference/pages`,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-page-creator`,
+            options: {
+                path: `${__dirname}/src/pages`,
+                ignore: ['**/*.tsx'],
+            },
+        },
+        {
             resolve: `gatsby-plugin-react-helmet-canonical-urls`,
             options: {
                 siteUrl: `${site_url}`,
