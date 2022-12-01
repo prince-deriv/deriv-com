@@ -92,7 +92,7 @@ const NavConference = () => {
                 />
                 <NavLinkCard
                     active="schedule"
-                    to="/conference/timeline/"
+                    to="/conference/timeline"
                     title={localize('Timeline')}
                 />
             </NavigationBar>
