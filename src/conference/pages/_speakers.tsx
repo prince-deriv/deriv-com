@@ -36,7 +36,6 @@ const IndividualSpeaker = styled.div`
     flex-direction: column;
     align-items: center;
     width: 282px;
-    max-height: 300px;
     height: fit-content;
     margin: 0 12px 56px 12px;
     box-shadow: 0 1px 3px rgba(14, 14, 14, 0.1), 0 1px 2px rgba(14, 14, 14, 0.06);
@@ -86,9 +85,9 @@ const Speakers = () => {
 
     return (
         <SpeakersWrapper>
-            <SpeakerInfo as="h5" type="heading-2">
+            <Header as="h5" type="heading-2" align="center">
                 {localize('Speakers')}
-            </SpeakerInfo>
+            </Header>
             <SpeakersTable>
                 {speakers_info.map((speaker) => {
                     return (
@@ -99,10 +98,10 @@ const Speakers = () => {
                             </SpeakerInfo>
                             <SpeakerInfo
                                 as="div"
-                                type="paragraph-1"
                                 weight="normal"
                                 pt="8px"
                                 mb="16px"
+                                style={{ fontSize: '16px' }}
                             >
                                 {speaker.role}
                             </SpeakerInfo>
