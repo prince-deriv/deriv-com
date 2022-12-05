@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 import { Header } from 'components/elements'
 import { Button } from 'components/form'
 import device from 'themes/device'
@@ -24,16 +25,21 @@ const StyledButton = styled(Button)`
 `
 
 const Login = () => {
+    const acess_link = 'https://deriv.zoom.us/webinar/register/WN_xurZU0MfQu2CHzgvBWfpDg'
     return (
         <LoginWrapper>
             <LoginHeader as="h3" type="subtitle-1">
                 {localize('Three days of content, networking and news.')}
             </LoginHeader>
-            <StyledButton secondary>{localize('Register here')}</StyledButton>
+            <Link to={acess_link} target="_blank" rel="noopener noreferrer">
+                <StyledButton secondary>{localize('Register here')}</StyledButton>
+            </Link>
             <LoginHeader as="div" weight="normal" type="subtitle-1" pt="32px">
                 {localize('or, if you already have access to the event')}
             </LoginHeader>
-            <StyledButton primary>{localize('Sign in')}</StyledButton>
+            <Link to={acess_link} target="_blank" rel="noopener noreferrer">
+                <StyledButton primary>{localize('Sign in')}</StyledButton>
+            </Link>
         </LoginWrapper>
     )
 }

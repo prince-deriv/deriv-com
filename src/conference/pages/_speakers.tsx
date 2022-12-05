@@ -10,7 +10,7 @@ import Raul from 'images/common/conference/Raul.png'
 import Sasky from 'images/common/conference/Sasky.png'
 import Ana from 'images/common/conference/Ana.png'
 import device from 'themes/device'
-import { localize } from 'components/localization'
+import { Localize, localize } from 'components/localization'
 
 const SpeakersWrapper = styled.div`
     display: flex;
@@ -36,7 +36,6 @@ const IndividualSpeaker = styled.div`
     flex-direction: column;
     align-items: center;
     width: 282px;
-    max-height: 300px;
     height: fit-content;
     margin: 0 12px 56px 12px;
     box-shadow: 0 1px 3px rgba(14, 14, 14, 0.1), 0 1px 2px rgba(14, 14, 14, 0.06);
@@ -54,21 +53,41 @@ const SpeakerInfo = styled(Header)`
 
 const Speakers = () => {
     const speakers_info = [
-        { name: 'Alcino', role: 'LATAM Deriv Manager', photo: Alcino },
-        { name: 'Ricardo', role: 'Central America Deriv team leader', photo: Ricardo },
-        { name: 'Sebastian', role: 'Colombia Deriv team leader', photo: Sebastian },
-        { name: 'Sasky', role: 'Brazil Deriv team leader', photo: Sasky },
-        { name: 'Claudia', role: 'Deriv Affiliate Manager', photo: Claudia },
-        { name: 'Raul', role: 'GDeriv Affiliate Manager', photo: Raul },
-        { name: 'Alejandro', role: 'Deriv customer support', photo: Alejandro },
-        { name: 'Ana', role: 'Deriv Affiliate Manager', photo: Ana },
+        { name: 'Alcino', role: <Localize translate_text="LATAM Deriv Manager" />, photo: Alcino },
+        {
+            name: 'Ricardo',
+            role: <Localize translate_text="Central America Deriv team leader" />,
+            photo: Ricardo,
+        },
+        {
+            name: 'Sebastian',
+            role: <Localize translate_text="Colombia Deriv team leader" />,
+            photo: Sebastian,
+        },
+        {
+            name: 'Sasky',
+            role: <Localize translate_text="Brazil Deriv team leader" />,
+            photo: Sasky,
+        },
+        {
+            name: 'Claudia',
+            role: <Localize translate_text="Deriv Affiliate Manager" />,
+            photo: Claudia,
+        },
+        { name: 'Raul', role: <Localize translate_text="GDeriv Affiliate Manager" />, photo: Raul },
+        {
+            name: 'Alejandro',
+            role: <Localize translate_text="Deriv customer support" />,
+            photo: Alejandro,
+        },
+        { name: 'Ana', role: <Localize translate_text="Deriv Affiliate Manager" />, photo: Ana },
     ]
 
     return (
         <SpeakersWrapper>
-            <SpeakerInfo as="h5" type="heading-2">
+            <Header as="h5" type="heading-2" align="center">
                 {localize('Speakers')}
-            </SpeakerInfo>
+            </Header>
             <SpeakersTable>
                 {speakers_info.map((speaker) => {
                     return (
@@ -79,12 +98,12 @@ const Speakers = () => {
                             </SpeakerInfo>
                             <SpeakerInfo
                                 as="div"
-                                type="paragraph-1"
                                 weight="normal"
                                 pt="8px"
                                 mb="16px"
+                                style={{ fontSize: '16px' }}
                             >
-                                {localize(speaker.role)}
+                                {speaker.role}
                             </SpeakerInfo>
                         </IndividualSpeaker>
                     )
