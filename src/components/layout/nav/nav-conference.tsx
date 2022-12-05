@@ -73,8 +73,6 @@ const NavLinkCard = ({ title, active, ...props }: NavLinkCardTypes) => {
 }
 
 const NavConference = () => {
-    const access = localize('Access')
-    const timeline = localize('Timeline')
     return (
         <StyledWrapper>
             <Link to="/">
@@ -90,9 +88,9 @@ const NavConference = () => {
                 <NavLinkCard
                     active="access"
                     to="https://deriv.zoom.us/webinar/register/WN_xurZU0MfQu2CHzgvBWfpDg"
-                    title={access}
+                    title={localize('Access')}
                 />
-                <NavLinkCard active="timeline" to="timeline" title={timeline} />
+                <NavLinkCard active="timeline" to="/timeline/" title={localize('Timeline')} />
             </NavigationBar>
         </StyledWrapper>
     )

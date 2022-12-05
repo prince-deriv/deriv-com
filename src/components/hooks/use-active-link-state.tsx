@@ -44,6 +44,11 @@ const getNavigationMap = (type: string) => {
                 cryptocurrencies: ['cryptocurrencies'],
                 commodities: ['commodities'],
             }
+        case 'conference':
+            return {
+                access: ['access'],
+                timeline: ['timeline'],
+            }
     }
 }
 
