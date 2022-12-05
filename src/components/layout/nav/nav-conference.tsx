@@ -92,7 +92,7 @@ const NavConference = () => {
                     to="https://deriv.zoom.us/webinar/register/WN_xurZU0MfQu2CHzgvBWfpDg"
                     title={access}
                 />
-                <NavLinkCard active="timeline" to="/conference/timeline" title={timeline} />
+                <NavLinkCard active="timeline" to="timeline" title={timeline} />
             </NavigationBar>
         </StyledWrapper>
     )
