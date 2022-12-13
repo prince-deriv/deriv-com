@@ -15,6 +15,6 @@ jobs:
         steps:
             - name: Branch Check 🔍 
               run: |
-                echo "$CLEAN_BRANCH is a valid branch for translation workflow"
+                echo '$CLEAN_BRANCH is a valid branch for translation workflow'
 
               
