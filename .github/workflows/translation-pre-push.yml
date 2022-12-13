@@ -11,7 +11,7 @@ env:
 jobs:
     check-translation-branch:
         runs-on: ubuntu-latest
-        if: startsWith(CLEAN_BRANCH, 'translation') || startsWith(CLEAN_BRANCH, 'stp')
+        if: startsWith(github.head_ref, 'translation') || startsWith(github.head_ref, 'stp')
         steps:
             - name: Branch Check 🔍 
               run: |
