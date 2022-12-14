@@ -6,6 +6,7 @@ on:
     branches:
         - 'master*'
 env: 
+ BRANCH: ${{ github.head_ref }}
  CLEAN_BRANCH: "${github.head_ref//[^[:alnum:]-_]/}"         
 jobs:
     check-translation-branch:
@@ -14,6 +15,6 @@ jobs:
         steps:
             - name: Branch Check 🔍 
               run: |
-                echo "$CLEAN_BRANCH is a valid branch for translation workflow"
+                echo "$BRANCH is a valid branch for translation workflow"
 
               
