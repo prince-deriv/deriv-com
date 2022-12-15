@@ -12,20 +12,21 @@ jobs:
         runs-on: ubuntu-latest
         if: |
               (startsWith(github.head_ref, 'translation') || startsWith(github.head_ref, 'stp')) &&
-               !contains(github.head_ref, '!') &&
-               !contains(github.head_ref, '@') &&   
-               !contains(github.head_ref, '#') &&   
-               !contains(github.head_ref, '$') &&   
-               !contains(github.head_ref, '%') &&   
-               !contains(github.head_ref, '^') &&   
-               !contains(github.head_ref, '&') &&   
-               !contains(github.head_ref, '*') &&   
-               !contains(github.head_ref, '(') &&   
-               !contains(github.head_ref, ')') 
+              #  !contains(github.head_ref, '!') &&
+              #  !contains(github.head_ref, '@') &&   
+              #  !contains(github.head_ref, '#') &&   
+              #  !contains(github.head_ref, '$') &&   
+              #  !contains(github.head_ref, '%') &&   
+              #  !contains(github.head_ref, '^') &&   
+              #  !contains(github.head_ref, '&') &&   
+              #  !contains(github.head_ref, '*') &&   
+              #  !contains(github.head_ref, '(') &&   
+              #  !contains(github.head_ref, ')') 
         steps:
             - name: Branch Check 🔍 
               run: |
-                CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"         
+                CLEAN_BRANCH="${BRANCH//[^[:alnum:]-_]/}"   
+                echo "$BRANCH"      
                 echo "$CLEAN_BRANCH is a valid branch for translation workflow"
 
               
